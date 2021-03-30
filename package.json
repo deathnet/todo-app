@@ -1,0 +1,20 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "todo-app",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch db.json --port 3001",
+		"client": "npm start --prefix todo",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.0.0",
+    "create-react-app": "^4.0.3"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}
