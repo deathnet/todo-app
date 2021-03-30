@@ -1,5 +1,9 @@
 import {Todomain} from './view/Todo_main'
 import {useState, useEffect} from 'react'
+import { Route } from 'react-router-dom'
+import { About } from './pages'
+import { BrowserRouter} from 'react-router-dom'
+import './App.css';
 
 function App() {
 	const [tasks, setTasks] = useState([]);
@@ -48,9 +52,12 @@ function App() {
 	}
 
   return (
-    <div className="App">
-      <Todomain tasks={tasks} addTask={addTask} deleteTask={deleteTask} />
-    </div>
+		<BrowserRouter>
+			<div className="App">
+      	<Todomain tasks={tasks} addTask={addTask} deleteTask={deleteTask} />
+				<Route path="/About" component={About} />
+    	</div>
+		</BrowserRouter>
   );
 }
 

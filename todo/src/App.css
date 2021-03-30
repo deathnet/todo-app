@@ -1,38 +1,65 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
 .App {
+	border: 1px solid gray;
+	width: 400px;
   text-align: center;
+	padding: 5px;
+	margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo_addForm * {
+	width: 350px;
+	border: 2px solid rgb(185, 185, 185);
+	border-radius: 4px;
+	margin-top: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo_addForm #todo_title {
+	height: 50px;
+	margin-bottom: 3px;
+	font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.todo_addForm #todo_description {
+	height: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.todo_addForm #todo_title,
+.todo_addForm #todo_description {
+	padding-left: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo_addForm button {
+	background-color: rgb(219, 255, 164);
+	height: 30px;
+	border: none;
+	margin-bottom: 15px;
+	font-weight: 700;
+}
+
+.task {
+	width: 350px;
+	border: 2px solid greenyellow;
+	border-radius: 5px;
+	margin: 5px auto;
+	position: relative;
+}
+
+.delbtn {
+	border: none;
+	background-color: navajowhite;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-weight: 700;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+	color: black;
 }
