@@ -6,7 +6,7 @@
   "scripts": {
     "server": "json-server --watch db.json --port 3001",
     "client": "npm start --prefix todo",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"nodemon ./todo/src/server/weatherServer.js\" \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "concurrently": "^6.0.0",
     "create-react-app": "^4.0.3",
     "cross-env": "^7.0.3",
+    "nodemon": "^2.0.7",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {

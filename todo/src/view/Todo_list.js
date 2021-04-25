@@ -1,5 +1,6 @@
-import React from 'react'
-import {Task} from './Task'
+import React from "react";
+import PropTypes from "prop-types";
+import {Task} from "./Task";
 
 export const Todolist = ({tasks, deleteTask}) => {
 	return (
@@ -8,5 +9,10 @@ export const Todolist = ({tasks, deleteTask}) => {
 				<Task task={task} key={index} deleteTask={deleteTask} />
 			))}
 		</div>
-	)
-}
+	);
+};
+
+Todolist.propTypes = {
+	tasks: PropTypes.array,
+	deleteTask: PropTypes.func
+};
