@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { WeatherComponent } from "./WeatherComponent";
 
 /**
  * convert (lon, lat) => (X, Y)
@@ -52,22 +53,42 @@ function lamcproj(lon, lat) {
 const fetchWeather = async (nx, ny) => {
 	const res = await fetch(`http://localhost:5000/weather?nx=${nx}&ny=${ny}`);
 	const data = await res.json();
-	console.log(data);
+	return data;
 };
 
 // Geolocation object
 const geoAPI = navigator.geolocation;
 
-export const Weather = () => {
-	useEffect(() => {
-		geoAPI.getCurrentPosition((position) => {
-			const Coordinates = calculateCooldinates(position.coords.longitude, position.coords.latitude);
-			fetchWeather(Coordinates.x, Coordinates.y);
+function initforecast(setLoading, setforecast) {
+	geoAPI.getCurrentPosition(async (position) => {
+		const Coordinates = calculateCooldinates(position.coords.longitude, position.coords.latitude);
+		await fetchWeather(Coordinates.x, Coordinates.y).then((data) => {
+			setforecast(data);
 		});
+		setLoading(false);
+	});
+}
+
+export const Weather = () => {
+	const [loading, setLoading] = useState(true);
+	const [forecast, setforecast] = useState([]);
+	useEffect(() => {
+		function first() {
+			initforecast(setLoading, setforecast);
+		}
+		first();
 	}, []);
+	if (loading) return <div>Loading...</div>;
+
+	const arrToComponent = (data) => {
+		return data.map((component, i) => {
+			return (<WeatherComponent forecast={component} key={i}></WeatherComponent>);
+		});
+	};
+
 	return (
 		<div>
-			
+			{arrToComponent(forecast)}
 		</div>
 	);
 };

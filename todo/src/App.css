@@ -13,6 +13,7 @@
 .App {
 	border: 1px solid gray;
 	width: 400px;
+	height: 450px;
   text-align: center;
 	padding: 5px;
 	margin: 0 auto;
